@@ -76,7 +76,7 @@ describe('total likes again', () => {
             __v: 0
         }
     ]
-    test('when list has only one blog equals the likes of that', () => {
+    test('count all likes', () => {
         const result = listHelper.totalLikes(blogs)
         expect(result).toBe(36)
     })
@@ -148,8 +148,17 @@ describe('max likes and blogs', () => {
         author: 'Robert C. Martin',
         blogs: 3
     })
-    test('when list has a blog that equals the max entries', () => {
+    test('when list has an author that equals the max entries', () => {
         const result = listHelper.mostBlogs(blogs)
         expect(result).toEqual(rcmBlog)
+    })
+
+    const ewdBlog = new Object({
+        author: 'Edsger W. Dijkstra',
+        likes: 17
+    })
+    test('when list has an author that equals the max total likes', () => {
+        const result = listHelper.mostLikes(blogs)
+        expect(result).toEqual(ewdBlog)
     })
 })

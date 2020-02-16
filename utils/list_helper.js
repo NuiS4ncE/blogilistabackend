@@ -38,9 +38,32 @@ const mostBlogs = (blogs) => {
     return returnBlog
 }
 
+const mostLikes = (blogs) => {
+    const mapAuthor = blogs.map(blog => {
+        const obj = new Object({
+            author: blog.author,
+            likes: blog.likes
+        })
+        return obj
+    })
+    const sumAuthor = _(mapAuthor).groupBy('author').map((val, key) => ({
+        'author': key,
+        'likes': _.sumBy(val, 'likes')
+    }))
+        .value()
+    const maxLikes = Math.max.apply(Math, sumAuthor.map((b) => {
+        return b.likes
+    }))
+    const returnBlog = sumAuthor.find((c) => {
+        return c.likes === maxLikes
+    })
+    return returnBlog
+}
+
 module.exports = {
     dummy,
     totalLikes,
     maxLikes,
     mostBlogs,
+    mostLikes,
 }
