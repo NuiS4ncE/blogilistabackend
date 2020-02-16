@@ -82,7 +82,7 @@ describe('total likes again', () => {
     })
 })
 
-describe('max likes', () => {
+describe('max likes and blogs', () => {
     const blogs = [
         {
             _id: '5a422a851b54a676234d17f7',
@@ -139,8 +139,17 @@ describe('max likes', () => {
         author: ablog.author,
         likes: ablog.likes
     })
-    test('when list has a blog equals the max likes of that', () => {
+    test('when list has a blog that equals the max likes of that', () => {
         const result = listHelper.maxLikes(blogs)
         expect(result).toStrictEqual(theblog)
+    })
+
+    const rcmBlog = new Object({
+        author: 'Robert C. Martin',
+        blogs: 3
+    })
+    test('when list has a blog that equals the max entries', () => {
+        const result = listHelper.mostBlogs(blogs)
+        expect(result).toEqual(rcmBlog)
     })
 })
