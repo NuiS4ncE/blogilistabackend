@@ -10,7 +10,23 @@ const totalLikes = (blogs) => {
     return num
 }
 
+const maxLikes = (blogs) => {
+    const maxnum = Math.max.apply(Math, blogs.map((a) => {
+        return a.likes
+    }))
+    const blog = blogs.find((b) => {
+        return b.likes === maxnum
+    })
+    const newBlog = new Object({
+        title: blog.title,
+        author: blog.author,
+        likes: blog.likes
+    })
+    return newBlog
+}
+
 module.exports = {
     dummy,
     totalLikes,
+    maxLikes,
 }
