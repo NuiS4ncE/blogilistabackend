@@ -1,11 +1,7 @@
 const listHelper = require('../utils/list_helper')
-
-test('dummy returns one', () => {
-    const blogs = []
-
-    const result = listHelper.dummy(blogs)
-    expect(result).toBe(1)
-})
+const supertest = require('supertest')
+const app = require('../app')
+const api = supertest(app)
 
 describe('total likes', () => {
     const listWithOneBlog = [
@@ -133,7 +129,8 @@ describe('max likes and blogs', () => {
         }
     ]
     const ablog = blogs.find((l) => {
-        return l.likes === 12 })
+        return l.likes === 12
+    })
     const theblog = new Object({
         title: ablog.title,
         author: ablog.author,
@@ -160,5 +157,34 @@ describe('max likes and blogs', () => {
     test('when list has an author that equals the max total likes', () => {
         const result = listHelper.mostLikes(blogs)
         expect(result).toEqual(ewdBlog)
+    })
+})
+
+describe('checks', () => {
+    const blog =
+    {
+        _id: '23142',
+        title: 'The great test',
+        author: 'Tester Testerson',
+        url: 'test.test',
+        likes: 69,
+        __v: 0
+    }
+    /*test('check id doesnt have underscore', () => {
+        const result = listHelper.checkID(blog)
+        expect(result).toEqual('id')
+    })*/
+
+    test('check that you can post with HTTP POST',async () => {
+        await api
+            .post('/api/blogs')
+            .send(blog)
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+
+        const response = await api.get('/api/blogs')
+
+        const contents = response.body.map(r => r.title)
+        expect(contents[1]).toEqual('The great test')
     })
 })

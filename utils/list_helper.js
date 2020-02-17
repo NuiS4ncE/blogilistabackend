@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 const _ = require('lodash')
+const supertest = require('supertest')
+const Blog = require('../models/blog')
+
 const dummy = (blogs) => {
     return 1
 }
@@ -60,10 +63,21 @@ const mostLikes = (blogs) => {
     return returnBlog
 }
 
+const checkID = (blog) => {
+    return 0
+}
+
+const blogsInDb = async () => {
+    const blogs = await Blog.find({})
+    return blogs.map(blog => blog.toJSON())
+}
+
 module.exports = {
     dummy,
     totalLikes,
     maxLikes,
     mostBlogs,
     mostLikes,
+    checkID,
+    blogsInDb,
 }

@@ -24,10 +24,10 @@ blogsRouter.post('/', (req, res, next) => {
     const body = req.body
 
     const blog = new Blog({
-        title: String,
-        author: String,
-        url: String,
-        likes: Number
+        title: body.title,
+        author: body.author,
+        url: body.url,
+        likes: body.likes
     })
 
     blog.save()
