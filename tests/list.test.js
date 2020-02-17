@@ -175,7 +175,7 @@ describe('checks', () => {
         expect(result).toEqual('id')
     })*/
 
-    test('check that you can post with HTTP POST',async () => {
+    test('check that you can post with HTTP POST', async () => {
         await api
             .post('/api/blogs')
             .send(blog)
