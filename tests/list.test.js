@@ -161,14 +161,14 @@ describe('max likes and blogs', () => {
 
 describe('checks', () => {
     const blog =
-        {
-            _id: '123213',
-            title: 'Test',
-            author: 'Test Tester',
-            url: 'test.test',
-            likes: 666,
-            __v: 0
-        }
+    {
+        _id: '123213',
+        title: 'Test',
+        author: 'Test Tester',
+        url: 'test.test',
+        likes: 666,
+        __v: 0
+    }
     test('check id doesnt have underscore', async () => {
         const blog = await api.get('/api/blogs')
         blog.body.map(blog => {
@@ -176,15 +176,22 @@ describe('checks', () => {
         })
     })
     test('check that you can post with HTTP POST', async () => {
+        var token = null
+        const login = await api
+            .post('/api/login')
+            .send({ username: 'testi', name: 'tester', password: 'testi12345678' })
+        token = login.body.token
+        console.log(login.body)
         await api
             .post('/api/blogs')
             .send(blog)
+            .set('Authorization', 'bearer ' + token)
             .expect(200)
             .expect('Content-Type', /application\/json/)
 
         const response = await api.get('/api/blogs')
 
         const contents = response.body.map(r => r.title)
-        expect(contents[1]).toEqual('The great test')
+        expect(contents[0]).toEqual('The great test')
     })
 })

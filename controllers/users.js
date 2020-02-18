@@ -11,7 +11,9 @@ usersRouter.get('/', async (request, response) => {
 
 usersRouter.post('/', async (request, response) => {
     const body = request.body
-    if (body.password > 3) {
+    console.log(body)
+    console.log(body.password)
+    if (body.password.length > 3) {
         const saltRounds = 10
         const passwordHash = await bcrypt.hash(body.password, saltRounds)
 
