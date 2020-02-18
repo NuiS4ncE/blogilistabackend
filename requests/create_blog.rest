@@ -5,7 +5,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sd
 {
     "url": "https://overreacted.io/things-i-don't-know-as-of-2018/", 
     "title": "Things I Don't Know as of 2018",
-    "author": "Dan Abramovich",
-    "userId": "5e4b375f337b4c3dfbd67cac",
+    "author": "Dan Abramovichi",
     "likes": 0
 }
