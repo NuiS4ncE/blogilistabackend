@@ -63,10 +63,6 @@ const mostLikes = (blogs) => {
     return returnBlog
 }
 
-const checkID = (blog) => {
-    return 0
-}
-
 const blogsInDb = async () => {
     const blogs = await Blog.find({})
     return blogs.map(blog => blog.toJSON())
@@ -78,6 +74,5 @@ module.exports = {
     favoriteBlog,
     mostBlogs,
     mostLikes,
-    checkID,
     blogsInDb,
 }

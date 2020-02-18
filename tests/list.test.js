@@ -161,17 +161,19 @@ describe('max likes and blogs', () => {
 
 describe('checks', () => {
     const blog =
-    {
-        _id: '23142',
-        title: 'The great test',
-        author: 'Tester Testerson',
-        url: 'test.test',
-        likes: 69,
-        __v: 0
-    }
-    test('check id doesnt have underscore', () => {
-        const result = listHelper.checkID(blog)
-        expect(result).toEqual('id')
+        {
+            _id: '123213',
+            title: 'Test',
+            author: 'Test Tester',
+            url: 'test.test',
+            likes: 666,
+            __v: 0
+        }
+    test('check id doesnt have underscore', async () => {
+        const blog = await api.get('/api/blogs')
+        blog.body.map(blog => {
+            expect(blog.id).toBeDefined()
+        })
     })
     test('check that you can post with HTTP POST', async () => {
         await api
