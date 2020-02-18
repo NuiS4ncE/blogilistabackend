@@ -21,7 +21,6 @@ describe('total likes', () => {
     })
 })
 
-
 describe('total likes again', () => {
     const blogs = [
         {
@@ -137,7 +136,7 @@ describe('max likes and blogs', () => {
         likes: ablog.likes
     })
     test('when list has a blog that equals the max likes of that', () => {
-        const result = listHelper.maxLikes(blogs)
+        const result = listHelper.favoriteBlog(blogs)
         expect(result).toStrictEqual(theblog)
     })
 
@@ -170,11 +169,10 @@ describe('checks', () => {
         likes: 69,
         __v: 0
     }
-    /*test('check id doesnt have underscore', () => {
+    test('check id doesnt have underscore', () => {
         const result = listHelper.checkID(blog)
         expect(result).toEqual('id')
-    })*/
-
+    })
     test('check that you can post with HTTP POST', async () => {
         await api
             .post('/api/blogs')

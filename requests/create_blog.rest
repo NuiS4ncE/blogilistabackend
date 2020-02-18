@@ -2,8 +2,9 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Test2",
-    "author": "Tester2",
-    "url": "test.url2", 
-    "likes": 666
+    "url": "https://overreacted.io/things-i-don't-know-as-of-2018/", 
+    "title": "Things I Don't Know as of 2018",
+    "author": "Dan Abramov",
+    "userId": "5e4b375f337b4c3dfbd67cac",
+    "likes": 0
 }

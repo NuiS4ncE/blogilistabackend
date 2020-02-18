@@ -14,7 +14,7 @@ const totalLikes = (blogs) => {
     return num
 }
 
-const maxLikes = (blogs) => {
+const favoriteBlog = (blogs) => {
     const maxnum = Math.max.apply(Math, blogs.map((a) => {
         return a.likes
     }))
@@ -75,7 +75,7 @@ const blogsInDb = async () => {
 module.exports = {
     dummy,
     totalLikes,
-    maxLikes,
+    favoriteBlog,
     mostBlogs,
     mostLikes,
     checkID,
